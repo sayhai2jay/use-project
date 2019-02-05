@@ -1,0 +1,74 @@
+{#
+    This is an example home page template. It inherits and extends a layout template
+    that lives in the top-level views/ folder for convenience
+  #}
+  
+{% extends "layout.html" %}
+{% import "macros/utils.html" as utils with context %}
+
+
+{% extends data.outerLayout %}
+{% block title %}{{ __("Sign Up For An account") }}{% endblock %}
+
+{% block bodyClass %}apos-signup-page{% endblock %}
+
+{%- import "apostrophe-schemas:macros.html" as schemas -%}
+
+{% block main %}
+<section class="page">
+    <!-- ***** Page Top Start ***** -->
+    <div class="cover" data-image="/modules/theme/img/photos/header.jpg">
+        <div class="cover-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Sign Up</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Sign Up</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Page Top End ***** -->
+    <div class="page-bottom">
+        <div class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12">
+                        <div class="apos-signup apos-ui" data-apos-signup>
+                            <form class="contact-form apos-form" data-apos-form>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        {{ schemas.fields(data.schema) }}
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button data-apos-signup-submit class="apos-submit btn-primary-line">Sign Up</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="alert alert-danger apos-signup-error">
+                            <h4>That username or email address may be in use. Please review and try again.</h4>
+                            </div>
+                            <div class="alert alert-success apos-signup-success">
+                            <h4>Thanks! You'll get a confirmation email shortly.</h4>
+                            <p>You must click the link in that email before you can use your new account. If you don't see it, be sure to check your spam folder. If problems persist try a different email address or provider.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

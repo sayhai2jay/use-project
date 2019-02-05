@@ -1,0 +1,417 @@
+{#
+  This is an example home page template. It inherits and extends a layout template
+  that lives in the top-level views/ folder for convenience
+#}
+
+{% extends "layout.html" %}
+{% import "macros/utils.html" as utils with context %}
+
+
+
+{% block main %}
+  <!-- <div class="main-content">
+    <h3>Hello world!
+      {% if not data.user %}
+        <a class="login-link" href="/login">Login</a>
+      {% endif %}
+    </h3>
+    <p>This is a very bare bones Apostrophe project. Now, get to work and make a real website!</p>
+  </div> -->
+  <!-- ***** Welcome Area Start ***** -->
+	<div class="welcome-area" id="welcome">
+		<!-- ***** Header Background Image Start ***** -->
+		<div class="right-bg">
+                {{ apos.singleton(data.page, 'rightbg', 'apostrophe-images', {
+                    toolbar: [ 'controls' ],
+                    limit: 1,
+                    controls: {
+                        movable: true,
+                        position: 'bottom-left'
+                      }
+                    }) }}
+		</div>
+		<!-- ***** Header Background Image End ***** -->
+
+		<div class="header-bg">
+		</div>
+
+		<!-- ***** Header Text Start ***** -->
+		<div class="header-text">
+			<div class="container">
+				<div class="row">
+					<div class="offset-lg-3 col-lg-6 col-md-12 col-sm-12">
+						
+                        {{ apos.area(data.page, 'headertext', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                    { name: 'H1',         element: 'h1' }
+                                ]
+                                }
+                            }
+                            }) }}
+                        
+						<p>
+                            {{ apos.area(data.page, 'headerdes', {
+                                widgets: {
+                                  'apostrophe-rich-text': {
+                                    toolbar: [ 'Bold', 'Italic' ]
+                                  }
+                                }
+                              }) }}
+                        </p>
+						<div class="buttons row">
+                            <div class="col-md-6">
+                                {{ apos.area(data.page, 'signup', {
+                                    widgets: {
+                                        'apostrophe-rich-text': {
+                                        toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                        styles: [
+                                            { name: 'anchor', element: 'a', attributes: { 'class': 'btn-white-line'} }
+                                        ]
+                                        }
+                                    },
+                                    controls: {
+                                        movable: true,
+                                        removable: true,
+                                        position: 'bottom-left'
+                                      }
+                                }) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ apos.area(data.page, 'hm_contact', {
+                                    widgets: {
+                                        'apostrophe-rich-text': {
+                                        toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                        styles: [
+                                            { name: 'anchor-border', element: 'a', attributes: { 'class': 'btn-primary-line'} }
+                                        ]
+                                        }
+                                    },
+                                    controls: {
+                                        movable: true,
+                                        removable: true,
+                                        position: 'bottom-right'
+                                      }
+                                }) }}
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ***** Header Text End ***** -->
+
+		<!-- ***** Play Button Start ***** -->
+		<!--<div class="play-button-wrapper">
+			<a href="#" class="btn-play">
+				<i class="fa fa-play"></i>
+			</a>
+		</div>-->
+		<!-- ***** Play Button End ***** -->
+	</div>
+	<!-- ***** Welcome Area End ***** -->
+
+
+	<!-- ***** Features Small Start ***** -->
+	<section class="section"  id="features">
+		<div class="container">
+
+			<!-- ***** Section Title Start ***** -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading">
+                        {{ apos.area(data.page, 'hmcatitle', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'Attribution / Meta', element: 'h2', attributes: { 'class': 'section-title'} }
+                                ]
+                                }
+                            }
+                        }) }}
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text">
+						<p>
+                            {{ apos.singleton(data.page, 'hmcatdesc', 'apostrophe-rich-text', {
+                                toolbar: [ 'Bold', 'Italic' ],
+                                styles: [
+                                { name: 'Title', element: 'h1' },
+                                { name: 'Meta', element: 'h5' }
+                                ]
+                            }) }}
+                        </p>
+					</div>
+				</div>
+			</div>
+			<!-- ***** Section Title End ***** -->
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<!-- ***** Features Small Item Start ***** -->
+						<div class="col-lg-3 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+							<a href="#" class="features-small-item">
+								<div class="icon">
+									<i class="fa fa-comments-o"></i>
+								</div>
+								<h5 class="features-title">
+                                    {{ apos.singleton(data.page, 'messagetitle', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Unlink' ]
+                                        }) }}
+                                </h5>
+								<p>
+                                    {{ apos.singleton(data.page, 'messagedesc', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </p>
+							</a>
+						</div>
+						<!-- ***** Features Small Item End ***** -->
+
+						<!-- ***** Features Small Item Start ***** -->
+						<div class="col-lg-3 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
+							<a href="features-single.html" class="features-small-item">
+								<div class="icon">
+									<i class="fa fa-lock"></i>
+								</div>
+								<h5 class="features-title">
+                                    {{ apos.singleton(data.page, 'securetitle', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </h5>
+								<p>
+                                    {{ apos.singleton(data.page, 'securedesc', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </p>
+							</a>
+						</div>
+						<!-- ***** Features Small Item End ***** -->
+
+						<!-- ***** Features Small Item Start ***** -->
+						<div class="col-lg-3 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+							<a href="features-single.html" class="features-small-item">
+								<div class="icon">
+									<i class="fa fa-cube"></i>
+								</div>
+								<h5 class="features-title">
+                                    {{ apos.singleton(data.page, 'transparencytitle', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </h5>
+								<p>
+                                    {{ apos.singleton(data.page, 'transparencydesc', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </p>
+							</a>
+						</div>
+						<!-- ***** Features Small Item End ***** -->
+
+						<!-- ***** Features Small Item Start ***** -->
+						<div class="col-lg-3 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.8s">
+							<a href="features-single.html" class="features-small-item">
+								<div class="icon">
+									<i class="fa fa-dollar"></i>
+								</div>
+								<h5 class="features-title">
+                                    {{ apos.singleton(data.page, 'transactiontitle', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </h5>
+								<p>
+                                    {{ apos.singleton(data.page, 'transactiondesc', 'apostrophe-rich-text', {
+                                        toolbar: [ 'Bold', 'Italic' ]
+                                        }) }}
+                                </p>
+							</a>
+						</div>
+						<!-- ***** Features Small Item End ***** -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Features Small End ***** -->
+
+
+	<!-- ***** Features Big Item Start ***** -->
+	<section class="section colored">
+		<div class="top"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-top-fix" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+					<div class="home-img-left">
+                        {{ apos.area(data.page, 'fingtipimg', {
+                            widgets: {
+                              'image': {
+                                sizesAttr: '(min-width: 450px) 30.4vw, 50vw'
+                              }
+                            }
+                        }) }}
+						<!-- <img src="../../../apostrophe-assets/public/images/photos/home/1.jpg" class="rounded img-fluid d-block mx-auto" alt="App"> -->
+					</div>
+				</div>
+				<div class="col-lg-1"></div>
+				<div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
+					<div class="left-heading">
+                        {{ apos.area(data.page, 'appfttitle', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'Attribution / Meta', element: 'h2', attributes: { 'class': 'section-title'} }
+                                ]
+                                }
+                            }
+                        }) }}
+					</div>
+					<div class="left-text">
+                        {{ apos.area(data.page, 'appftdesc', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'paragraph', element: 'p' }
+                                ]
+                                }
+                            }
+                        }) }}
+                        {{ apos.area(data.page, 'applisting', {
+                            widgets: {
+                                'listing': { }
+                            }
+                        }) }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom"></div>
+	</section>
+	<!-- ***** Features Big Item End ***** -->
+
+
+	<!-- ***** Features Big Item Start ***** -->
+	<section class="section padding-top-20">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
+					<div class="left-heading">
+                        {{ apos.area(data.page, 'integrationtitle', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'Attribution / Meta', element: 'h2', attributes: { 'class': 'section-title'} }
+                                ]
+                                }
+                            }
+                        }) }}
+					</div>
+					<div class="left-text">
+                        {{ apos.area(data.page, 'integrationdesc', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'paragraph', element: 'p' }
+                                ]
+                                }
+                            }
+                        }) }}
+                        {{ apos.area(data.page, 'integrationlisting', {
+                            widgets: {
+                                'listing': { }
+                            }
+                        }) }}
+					</div>
+				</div>
+				<div class="col-lg-1"></div>
+				<div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix-big" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+					<div class="home-img-right">
+                        {{ apos.area(data.page, 'intimg', {
+                            widgets: {
+                              'image': {
+                                sizesAttr: '(min-width: 450px) 30.4vw, 50vw'
+                              }
+                            }
+                        }) }}
+                    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Features Big Item End ***** -->
+
+
+	<!-- ***** Home Seperator Start ***** -->
+	<section class="section home-seperator">
+		<div class="top"></div>
+			<div class="left-item">
+                {{ apos.singleton(data.page, 'hmgetintouch', 'apostrophe-images', {
+                    limit: 1
+                    }) }}
+				<div class="content">
+                    {{ apos.area(data.page, 'gtouch_title', {
+                        widgets: {
+                            '   ': {
+                            toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                            styles: [
+                            { name: 'h6', element: 'h6' }
+                            ]
+                            }
+                        }
+                    }) }}
+                    {{ apos.area(data.page, 'gtouch_desc', {
+                        widgets: {
+                            'apostrophe-rich-text': {
+                            toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                            styles: [
+                            { name: 'paragraph', element: 'p' }
+                            ]
+                            }
+                        }
+                    }) }}
+					<a href="contact.html" class="btn-primary-line">Contact Us</a>
+				</div>
+			</div>
+			<div class="right-item">
+                {{ apos.singleton(data.page, 'hmapisdk', 'apostrophe-images', {
+                    limit: 1
+                    }) }}
+				<div class="content">
+                        {{ apos.area(data.page, 'apisdk_title', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'h6', element: 'h6' }
+                                ]
+                                }
+                            }
+                        }) }}
+                        {{ apos.area(data.page, 'apisdk_desc', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                { name: 'paragraph', element: 'p' }
+                                ]
+                                }
+                            }
+                        }) }}
+				</div>
+			</div>
+		<div class="bottom"></div>
+	</section>
+	<!-- ***** Home Seperator End ***** -->
+{% endblock %}
+
+
+

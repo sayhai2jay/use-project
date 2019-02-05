@@ -1,0 +1,21 @@
+{% import 'macros/button.html' as button %}
+
+<div class="row">
+{% for piece in data.widget._pieces %}
+    <div class="col-md-4">
+        <h2 class="section-title">
+            {% if piece._url %}<a href="{{ piece._url }}">{% endif %}
+                {{ piece.title }}
+            {% if piece._url %}</a>{% endif %}
+        </h2>
+        <figure class="text-center">
+            <img src="{{ apos.attachments.url(piece.image) }}" style="width: 50%;" alt="">
+        </figure>
+        <p class="content">{{ piece.tabContent }}</p>
+        <h5>{{ piece.publishedAt | date('MMM Do') }} at {{ piece.publishedAt | date('h:mma') }}</h5>
+        {{ button.render('Read the Article', piece._blog._url, { class:'o-button--ghost o-button--ghost--alt' }) }}
+    </div>
+
+
+{% endfor %}
+</div>

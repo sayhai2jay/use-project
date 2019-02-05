@@ -1,0 +1,39 @@
+ {% macro columns() %}
+  {{ apos.area(data.page, 'main', {
+    blockLevelControls: true,
+    widgets: {
+      'one-column': {},
+      'two-column': {},
+      'three-column': {},
+      'four-column': {},
+      'one-three': {},
+      'three-one': {},
+      'contact-item': {},
+      'listing': {},
+      'apostrophe-blog-pages': {}
+    }
+  }) }}
+{% endmacro %}
+
+{% macro column(parent, name, imageSize) %}
+  {{ apos.area(parent, name, {
+    widgets: {
+      'apostrophe-rich-text': {
+        toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+        styles: [ 
+        { name: 'paragraph', element: 'p' }, 
+        { name: 'span', element: 'span' }, 
+        { name: 'H1',  element: 'h1' }, 
+        { name: 'H2', element: 'h2', attributes: { 'class': 'section-title'} }, 
+        { name: 'H5', element: 'h5' } 
+        ]
+      },
+      'apostrophe-images': {
+        size: imageSize
+      },
+      'apostrophe-video': {},
+      'test': {}
+    }
+  }) }} 
+{% endmacro %} 
+

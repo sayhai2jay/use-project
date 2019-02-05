@@ -1,0 +1,80 @@
+{# Automatically extends the right outer layout and also handles AJAX siutations #}
+{% extends data.outerLayout %}
+
+{% block afterMain %}
+  <!-- ***** Footer Start ***** -->
+	<footer>
+		<div class="top"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-md-12 col-sm-12">
+                    {{ apos.area(data.page, 'footlogo', {
+                        widgets: {
+                          'image': {
+                            sizesAttr: '(min-width: 175px) 13vw'
+                          }
+                        }
+                    }) }}
+                    <!-- <img src="../../../apostrophe-assets/public/images/usc-logo-dark.png" class="logo" alt=""> -->
+					<div class="text">
+                        {{ apos.singleton(data.page, 'footercont', 'apostrophe-rich-text', {
+                            toolbar: [ 'Bold', 'Italic' ]
+                            }) }}
+                    </div>
+					<ul class="social">
+						<!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-github"></i></a></li>-->
+					</ul>
+				</div>
+				<!--<div class="col-lg-2 col-md-4 col-sm-6 col-6">
+					<h5>Helpful Links</h5>
+					<ul class="footer-nav">
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>About Us</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Features</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>FAQ’s</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Blog</span></a></li>
+					</ul>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
+					<h5>Support</h5>
+					<ul class="footer-nav">
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Privacy Policy</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Terms of Use</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Support Center</span></a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i><span>Contact</span></a></li>
+					</ul>
+				</div>-->
+				<div class="col-lg-3 col-md-4 col-sm-12">
+                    <!-- {{ utils.columns() }} -->
+					<h5>
+                        {{ apos.singleton(data.page, 'footercontitle', 'apostrophe-rich-text', {
+                            toolbar: [ 'Bold', 'Italic', 'controls' ],
+                            controls: {
+                                movable: true,
+                                position: 'bottom-right'
+                              }
+                            }) }}
+                    </h5>
+					<div class="address">
+                        {{ apos.singleton(data.page, 'footercontadd', 'apostrophe-rich-text', {
+                            toolbar: [ 'Bold', 'Italic', 'controls' ],
+                            controls: {
+                                movable: true,
+                                position: 'top-right'
+                              }
+                            }) }}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<p class="copyright">© 2018 Universal Smart Contracts, LLC. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- ***** Footer End ***** -->
+{% endblock %}

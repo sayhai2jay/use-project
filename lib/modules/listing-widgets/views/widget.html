@@ -1,0 +1,15 @@
+{% import "macros/utils.html" as utils %}
+<ul class="row listing-style">
+    <li class="col-lg-6 col-md-6 col-sm-12">
+        <a class="btn-home">
+            <i class="fa fa-angle-right"></i>
+            {{ utils.column(data.widget, 'one', 'one-half') }}
+        </a>
+    </li>
+    <li class="col-lg-6 col-md-6 col-sm-12">
+        <a class="btn-home">
+            <i class="fa fa-angle-right"></i>
+            {{ utils.column(data.widget, 'two', 'one-half') }}
+        </a>
+    </li>
+</ul>

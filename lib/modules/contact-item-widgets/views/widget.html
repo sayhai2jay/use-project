@@ -1,0 +1,15 @@
+<div class="contact-item">
+    <div class="icon">
+        <i class="fa fa-location-arrow"></i>
+    </div>
+    {{ apos.area(data.widget, 'apisdk_desc', {
+        widgets: {
+            'apostrophe-rich-text': {
+            toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+            styles: [
+            { name: 'paragraph', element: 'p' }
+            ]
+            }
+        }
+    }) }}
+</div>

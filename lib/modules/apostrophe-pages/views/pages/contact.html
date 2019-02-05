@@ -1,0 +1,155 @@
+{#
+    This is an example home page template. It inherits and extends a layout template
+    that lives in the top-level views/ folder for convenience
+  #}
+  
+{% extends "layout.html" %}
+{% import "macros/utils.html" as utils with context %}
+
+
+{% block main %}
+
+<section class="page">
+    <!-- ***** Page Top Start ***** -->
+    <div class="cover" data-image="/modules/theme/img/photos/header.jpg">
+        <div class="cover-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Contact</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Contact</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Page Top End ***** -->
+    <!-- {{ utils.columns() }} -->
+    <!-- ***** Page Content Start ***** -->
+    <div class="page-bottom">
+        <div class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fa fa-location-arrow"></i>
+                            </div>
+                            {{ apos.area(data.page, 'contactloc', {
+                                widgets: {
+                                    'apostrophe-rich-text': {
+                                    toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                    styles: [
+                                        { name: 'H1',         element: 'h1' }
+                                    ]
+                                    }
+                                }
+                            }) }}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            {{ apos.area(data.page, 'contacttel', {
+                                widgets: {
+                                    'apostrophe-rich-text': {
+                                    toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                    styles: [
+                                        { name: 'H1',         element: 'h1' }
+                                    ]
+                                    }
+                                }
+                            }) }}
+                            <!-- <a href="tel:(832) 459-7335">(832) 459-7335</a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="contact-item">
+                            <div class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            {{ apos.area(data.page, 'contactmail', {
+                                widgets: {
+                                    'apostrophe-rich-text': {
+                                    toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                    styles: [
+                                        { name: 'H1',         element: 'h1' }
+                                    ]
+                                    }
+                                }
+                            }) }}
+                            <!-- <a href="mailto:info@yourbrand.com">info@uscblocks.com</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Map Container Start ***** -->
+        <div class="section map">
+            <div class="top"></div>
+                <div class="item">
+                    <!-- ***** Google Maps Start ***** -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2422.0583193008742!2d-106.95715648446482!3d44.797754879098754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x5335fabc2a638ba3%3A0xdcb2f8df92045da1!2sWyoming+Mail+Forwarding+and+Coworking%2C+30+N+Gould+St%2C+Sheridan%2C+WY+82801%2C+USA!3m2!1d44.7977549!2d-106.95496779999999!5e1!3m2!1sen!2sin!4v1545394458916" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <!-- ***** Google Maps End ***** -->
+                </div>
+            <div class="bottom"></div>
+        </div>
+        <!-- ***** Map Container End ***** -->
+
+        <div class="contact-bottom">
+            <div class="container">
+                <div class="row">
+                    <!-- ***** Contact Text Start ***** -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        {{ apos.area(data.page, 'getintouch_title', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                    { name: 'H5',         element: 'h5', attributes: { 'class': 'margin-bottom-30'} }
+                                ]
+                                }
+                            }
+                        }) }}
+                        <!-- <h5 class="margin-bottom-30">Get in touch</h5> -->
+                        <div class="contact-text">
+                            <p>To learn more about smart contracts and blockchain for your business contact us today. </p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <!-- ***** Contact Text End ***** -->
+
+                    <!-- ***** Contact Form Start ***** -->
+                    <div class="col-lg-8 col-md-6 col-sm-12">
+                            {{
+                                apos.area(data.page, 'body', {
+                                  widgets: {
+                                    'contact-form': {}
+                                  }
+                                })
+                            }}
+                    </div>
+                    <!-- ***** Contact Form End ***** -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Page Content End ***** -->
+</section>
+
+
+{% endblock %}

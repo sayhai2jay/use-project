@@ -1,0 +1,9 @@
+{% import "macros/utils.html" as utils %}
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        {{ utils.column(data.widget, 'one', 'one-one') }}
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        {{ utils.column(data.widget, 'two', 'one-third') }}
+    </div>
+</div>

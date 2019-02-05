@@ -1,0 +1,180 @@
+{# Automatically extends the right outer layout and also handles AJAX siutations #}
+{% extends data.outerLayout %}
+
+{% block title %}
+  {# Create a useful, SEO-friendly title tag based on what we have #}
+  {% if data.piece %}
+    {{ data.piece.title }}
+  {% elseif data.page %}
+    {{ data.page.title }}
+  {% else %}
+    {{ apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') }}
+  {% endif %}
+{% endblock %}
+
+{% block extraHead %}
+  {#
+    This block outputs its contents in the HTML document's <head>.
+    It is a good place to put extra script, link and meta tags.
+  #}
+{% endblock %}
+
+{% block beforeMain %}
+
+
+    <header class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{ data.home._url }}" class="logo">
+                                <!-- {{ apos.singleton(data.global, 'logo', 'apostrophe-images', {
+                                    minSize: [ 175, 52 ],
+                                    limit: 1,
+                                    size: 'full'
+                                }) }} -->
+                            <span class="light-logo">
+                                {{ apos.area(data.global, 'Sitelogo', {
+                                    widgets: {
+                                        'image': {
+                                        sizesAttr: '(min-width: 175px) 13vw'
+                                        }
+                                    }
+                                }) }}
+                            </span>
+                            <span class="dark-logo">
+                                {{ apos.area(data.global, 'darklogo', {
+                                    widgets: {
+                                        'image': {
+                                        sizesAttr: '(min-width: 175px) 13vw'
+                                        }
+                                    }
+                                }) }}
+                            </span>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav tabs">
+                            <li>
+                                <a href="{{ data.home._url }}">{{ data.home.title }}</a>
+                            </li>
+                            {% for tab in data.home._children %}
+                              <li class="{% if data.page and
+                                (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id)
+                              %}
+                                current
+                              {% endif %} "><a href="{{ tab._url }}">{{ tab.title }}</a>
+                                {% if tab._children.length %}
+                                  <ul>
+                                    {% for child in tab._children %}
+                                      <li><a href="{{ child._url }}">{{ child.title }}</a></li>
+                                    {% endfor %}
+                                  </ul>
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                            <li>
+                                {{ apos.area(data.global, 'nav_signup', {
+                                    widgets: {
+                                        'apostrophe-rich-text': {
+                                        toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                        styles: [
+                                            { name: 'anchor-border', element: 'a', attributes: { 'class': 'btn-primary-line'} }
+                                        ]
+                                        }
+                                    },
+                                    controls: {
+                                        movable: true,
+                                        removable: true,
+                                        position: 'bottom-right'
+                                        }
+                                }) }}
+                            </li>
+                          </ul>
+                        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+{% endblock %}
+
+{% block main %}
+  {#
+    Usually, your page templates in the apostrophe-pages module will override
+    this block. It is safe to assume this is where your page-specific content
+    should go.
+  #}
+{% endblock %}
+
+{% block afterMain %}
+  <!-- ***** Footer Start ***** -->
+	<footer>
+		<div class="top"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-md-12 col-sm-12">
+                    {{ apos.area(data.global, 'footlogo', {
+                        widgets: {
+                          'image': {
+                            sizesAttr: '(min-width: 175px) 13vw'
+                          }
+                        }
+                    }) }}
+                    <!-- <img src="../../../apostrophe-assets/public/images/usc-logo-dark.png" class="logo" alt=""> -->
+					<div class="text">
+                            {{ apos.area(data.global, 'footercont', {
+                                widgets: {
+                                    'apostrophe-rich-text': {
+                                    toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                    styles: [
+                                        { name: 'paragraph',         element: 'p' }
+                                    ]
+                                    }
+                                }
+                            }) }}
+                    </div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-sm-12">
+                    {{ apos.area(data.global, 'footercontitle', {
+                        widgets: {
+                            'apostrophe-rich-text': {
+                            toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                            styles: [
+                                { name: 'H5', element: 'h5' }
+                            ]
+                            }
+                        }
+                    }) }}
+                    <div class="address">
+                        {{ apos.area(data.global, 'footercontadd', {
+                            widgets: {
+                                'apostrophe-rich-text': {
+                                toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+                                styles: [
+                                    { name: 'paragraph', element: 'p' }
+                                ]
+                                }
+                            }
+                        }) }}
+                    </div>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="copyright">© 2018 Universal Smart Contracts, LLC. All Rights Reserved.</p>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</footer>
+	<!-- ***** Footer End ***** -->
+{% endblock %}
